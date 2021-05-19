@@ -12,12 +12,18 @@ var checksite = {
             }
           }
           res(false)
-        }).catch(function(){res(null)})
+        }).catch(function(err){
+          console.log("Error:",err)
+          res(null);
+        })
       }
       catch(err){
         res(null)
       }
     })
+  },
+  pornblock:function(domain){
+   // return new Promise(
   },
   gethostorurl:function gethostorurl(url){
     try{
