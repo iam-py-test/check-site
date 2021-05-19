@@ -42,7 +42,10 @@ var main = async function(){
 document.getElementById('hostname').textContent = checksite.gethostorurl(await checksite.getTabURL())
   var result_urlhaus = await checksite.urlhaus(checksite.gethostorurl(url))
   document.getElementById('urlhaus').textContent = (result_urlhaus === true)?"malware":(result_urlhaus === false)?"safe":"unknown"
-  
+  var urlreports = document.querySelectorAll("a.url[data-href]")
+  for(var t = 0;t < urlreports.length;t++){
+    urlreports[t].href = urlreports[t].getAttribute("data-href").replace("$URL",url)
+  }
 }
 main().catch(function(err){
   console.trace("Error:",err)
