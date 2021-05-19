@@ -1,0 +1,6 @@
+{
+  "name":"Check site",
+  "version":"1.0",
+  "permissions":["tabs","webNavigation"],
+  "manifest_version":2
+}
