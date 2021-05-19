@@ -19,7 +19,8 @@ var checksite = {
   }
 }
 var main = async function(){
-  console.log(checksite.gethostorurl(await checksite.getTabURL()))
+  var url = await checksite.getTabURL()
+  console.log(checksite.gethostorurl(url),url)
 document.getElementById('hostname').textContent = checksite.gethostorurl(await checksite.getTabURL())
   
 }
