@@ -44,7 +44,7 @@ document.getElementById('hostname').textContent = checksite.gethostorurl(await c
   document.getElementById('urlhaus').textContent = (result_urlhaus === true)?"malware":(result_urlhaus === false)?"safe":"unknown"
   var urlreports = document.querySelectorAll("a.url[data-href]")
   for(var t = 0;t < urlreports.length;t++){
-    urlreports[t].href = urlreports[t].getAttribute("data-href").replace("$URL",url)
+    urlreports[t].href = urlreports[t].getAttribute("data-href").replace("$URL",encodeURIComponent(url))
   }
 }
 main().catch(function(err){
