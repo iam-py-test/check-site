@@ -18,6 +18,6 @@ var checksite = {
   }
 }
 var main = async function(){
-document.getElementById('hostname').textContent = checksite.gethostorurl(await getTabURL())
+document.getElementById('hostname').textContent = checksite.gethostorurl(await checksite.getTabURL())
 }
 main().catch(console.log)
