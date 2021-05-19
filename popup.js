@@ -12,6 +12,7 @@ var checksite = {
   getTabURL: function(){
     return new Promise(res => {
       chrome.tabs.query({active:true,currentWindow:true},function(tab){
+        console.log(tab)
         res(tab.url)
       })
     })
