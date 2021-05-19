@@ -17,6 +17,7 @@ var checksite = {
     })
   }
 }
-(async function(){
+var main = async function(){
 document.getElementById('hostname').textContent = checksite.gethostorurl(await getTabURL())
-})()
+}
+main().catch(console.log)
