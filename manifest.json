@@ -1,9 +1,11 @@
 {
   "name":"Check site",
-  "version":"1.0",
+  "description":"Get information on sites you visit from common blocklists and antivirus providers",
+  
   "permissions":["tabs","webNavigation"],
   "browser_action":{
     "default_popup":"popup.html"
   },
+  "version":"1.0",
   "manifest_version":2
 }
