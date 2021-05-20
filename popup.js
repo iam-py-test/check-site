@@ -30,7 +30,7 @@ var checksite = {
           var split = text.split("\n")
           for(var t = 0;t < split.length;t++){
             if(split[t].startsWith("#")){continue}
-            console.log(split[t][-1])
+            console.log(split[t])
             if(split[t] === domain){
               res(true)
             }
