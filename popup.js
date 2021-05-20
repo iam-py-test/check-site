@@ -30,6 +30,7 @@ var checksite = {
           var split = text.split("\n")
           for(var t = 0;t < split.length;t++){
             if(split[t].startsWith("#")){continue}
+            console.log(split[t][-1])
             if(split[t] === domain){
               res(true)
             }
@@ -70,12 +71,12 @@ var main = async function(){
   console.log(checksite.gethostorurl(url),url)
 document.getElementById('hostname').textContent = checksite.gethostorurl(await checksite.getTabURL())
 checksite.urlhaus(checksite.gethostorurl(url)).then(function(result_urlhaus){
-  document.getElementById('urlhaus').textContent = (result_urlhaus === true)?"malware":(result_urlhaus === false)?"safe":"unknown"
-})
+  document.getElementById('urlhaus').textContent = (result_urlhaus === true)?"malware":(result_urlhaus === false)?"unrated":"unknown"
+}).catch(console.error)
   checksite.dandelioncheck(checksite.gethostorurl(url)).then(function(result){
-    document.getElementById('dand').textContent = (result === true)?"malware":(result===false)?"safe":"unknown"
-  })
-  var urlreports = document.querySelectorAll("a.url[data-href]")
+    document.getElementById('dand').textContent = (result === true)?"malware":(result===false)?"unrated":"unknown"
+  }).catch(console.error)
+  var urlreports = (document.querySelectorAll("a.url[data-href]")||[])
   for(var t = 0;t < urlreports.length;t++){
     urlreports[t].href = urlreports[t].getAttribute("data-href").replace("$URL",encodeURIComponent(url))
   }
