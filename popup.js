@@ -72,6 +72,9 @@ document.getElementById('hostname').textContent = checksite.gethostorurl(await c
 checksite.urlhaus(checksite.gethostorurl(url)).then(function(result_urlhaus){
   document.getElementById('urlhaus').textContent = (result_urlhaus === true)?"malware":(result_urlhaus === false)?"safe":"unknown"
 })
+  checksite.dandelioncheck(checksite.gethostorurl(url)).then(function(result){
+    document.getElementById('dand').textContent = (result === true)?"malware":(result===false)?"safe":"unknown"
+  })
   var urlreports = document.querySelectorAll("a.url[data-href]")
   for(var t = 0;t < urlreports.length;t++){
     urlreports[t].href = urlreports[t].getAttribute("data-href").replace("$URL",encodeURIComponent(url))
