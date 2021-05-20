@@ -7,7 +7,7 @@ var checksite = {
           var split = text.split("\n")
           for(var t = 0;t < split.length;t++){
             if(split[t].startsWith("#")){continue}
-            if(split[t] === domain){
+            if(split[t].slice(0,-1) === domain){
               res(true)
             }
           }
