@@ -22,6 +22,29 @@ var checksite = {
       }
     })
   },
+  dandelioncheck:function(domain){
+    return new Promise(res => {
+      try{
+        fetch('https://github.com/DandelionSprout/adfilt/raw/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareDomains.txt').then(async function(req){
+          var text = await req.text()
+          var split = text.split("\n")
+          for(var t = 0;t < split.length;t++){
+            if(split[t].startsWith("#")){continue}
+            if(split[t] === domain){
+              res(true)
+            }
+          }
+          res(false)
+        }).catch(function(err){
+          console.log("Error:",err)
+          res(null);
+        })
+      }
+      catch(err){
+        res(null)
+      }
+    })
+  },
   pornblock:function(domain){
    // return new Promise(
   },
@@ -46,8 +69,9 @@ var main = async function(){
   var url = await checksite.getTabURL()
   console.log(checksite.gethostorurl(url),url)
 document.getElementById('hostname').textContent = checksite.gethostorurl(await checksite.getTabURL())
-  var result_urlhaus = await checksite.urlhaus(checksite.gethostorurl(url))
+checksite.urlhaus(checksite.gethostorurl(url)).then(function(result_urlhaus){
   document.getElementById('urlhaus').textContent = (result_urlhaus === true)?"malware":(result_urlhaus === false)?"safe":"unknown"
+})
   var urlreports = document.querySelectorAll("a.url[data-href]")
   for(var t = 0;t < urlreports.length;t++){
     urlreports[t].href = urlreports[t].getAttribute("data-href").replace("$URL",encodeURIComponent(url))
