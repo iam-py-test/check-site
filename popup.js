@@ -25,7 +25,7 @@ var checksite = {
   dandelioncheck:function(domain){
     return new Promise(res => {
       try{
-        fetch('https://github.com/DandelionSprout/adfilt/raw/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareDomains.txt').then(async function(req){
+        fetch('https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareDomains.txt').then(async function(req){
           var text = await req.text()
           var split = text.split("\n")
           for(var t = 0;t < split.length;t++){
