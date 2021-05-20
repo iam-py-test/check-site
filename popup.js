@@ -30,7 +30,6 @@ var checksite = {
           var split = text.split("\n")
           for(var t = 0;t < split.length;t++){
             if(split[t].startsWith("#")){continue}
-            console.log(split[t].slice(0,-1))
             if(split[t].slice(0,-1) === domain){
               res(true)
               break;
@@ -51,9 +50,9 @@ var checksite = {
    return new Promise(function(res){
      fetch("https://raw.githubusercontent.com/iam-py-test/my_filters_001/main/porn.txt").then(async function(req){
        var text = await req.text()
-       var lines = text.split("\n")
+       var lines = text.split("\n");
        for(var t = 0;t < lines.length;t++){
-         if(lines[t].startsWith('!') || lines[t].startswith("||")){continue}
+         if(lines[t].startsWith('!') || lines[t].startsWith("||")){continue}
          if(lines[t].slice(0,-1) === domain){
            res(true)
          }
