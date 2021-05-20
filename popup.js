@@ -33,6 +33,7 @@ var checksite = {
             console.log(split[t].slice(0,-1))
             if(split[t].slice(0,-1) === domain){
               res(true)
+              break;
             }
           }
           res(false)
@@ -47,7 +48,19 @@ var checksite = {
     })
   },
   pornblock:function(domain){
-   // return new Promise(
+   return new Promise(function(res){
+     fetch("https://raw.githubusercontent.com/iam-py-test/my_filters_001/main/porn.txt").then(async function(req){
+       var text = await req.text()
+       var lines = text.split("\n")
+       for(var t = 0;t < lines.length;t++){
+         if(lines[t].startsWith('!') || lines[t].startswith("||")){continue}
+         if(lines[t].slice(0,-1) === domain){
+           res(true)
+         }
+       }
+       res(false)
+     })
+   }).catch(function(err){console.log("Error:",err);res(null)})
   },
   gethostorurl:function gethostorurl(url){
     try{
@@ -75,6 +88,9 @@ checksite.urlhaus(checksite.gethostorurl(url)).then(function(result_urlhaus){
 }).catch(console.error)
   checksite.dandelioncheck(checksite.gethostorurl(url)).then(function(result){
     document.getElementById('dand').textContent = (result === true)?"malware":(result===false)?"unrated":"unknown"
+  }).catch(console.error)
+  checksite.pornblock(checksite.gethostorurl(url)).then(function(result){
+    document.getElementById('pornblock').textContent = (result===true)?"porn":(result==="false")?"unrated":"unknown"
   }).catch(console.error)
   var urlreports = (document.querySelectorAll("a.url[data-href]")||[])
   for(var t = 0;t < urlreports.length;t++){
