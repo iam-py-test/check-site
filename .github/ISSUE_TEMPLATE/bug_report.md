@@ -34,6 +34,14 @@ If applicable, add screenshots to help explain your problem.
  - Browser [e.g. stock browser, safari]
  - Version [e.g. 22]
 
+**Check site version**
+[i.e. 1.0]
+
+**Aditional issue information**
 - [ ] Is this a security issue?
+- [ ] Can you reproduce the problem with all other extentions disabled?
+- [ ] Can you reproduce in a new and unmodified browser profile?
+- [ ] Can you reporuce with the latest verison? 
+
 **Additional context**
 Add any other context about the problem here.
