@@ -107,7 +107,7 @@ checksite.urlhaus(checksite.gethostorurl(url)).then(function(result_urlhaus){
     document.getElementById('pornblock').textContent = (result===true)?"porn":(result===false)?"unrated":"unknown"
   }).catch(console.error)
   checksite.getSiteRep(checksite.gethostorurl(url)).then(function(result){
-    document.getElementById('sitereport').textContent = result
+    document.getElementById('sitereport').textContent = (result === 'unknown')?"Not rated":(result==="safe")?"Safe":(result==="site-safe")?"This site is safe but some content on it may not":(result==='malware')?"Malware":"Unknown"
   })
   var urlreports = (document.querySelectorAll("a.url[data-href]")||[])
   for(var t = 0;t < urlreports.length;t++){
