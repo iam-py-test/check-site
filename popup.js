@@ -1,5 +1,6 @@
 var checksite = {
   urlhaus:function(domain){
+    var times = 0;
     return new Promise(res => {
       try{
         fetch('https://raw.githubusercontent.com/curbengh/urlhaus-filter/master/urlhaus-filter-domains.txt').then(async function(req){
@@ -7,9 +8,16 @@ var checksite = {
           var split = text.split("\n")
           for(var t = 0;t < split.length;t++){
             if(split[t].startsWith("#")){continue}
-            console.log(split[t],split[t].slice(0,-1))
+            
             if(split[t].slice(0,-1) === domain){
               res(true)
+            }
+            else{
+              
+              if(times < 20){
+                times++
+            console.log(split[t] === split[t].slice(0,-1))
+              }
             }
           }
           res(false)
