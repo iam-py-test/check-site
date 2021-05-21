@@ -1,6 +1,7 @@
 html{
-  width:205px;
+  width: 205px;
+  text-align: center;
 }
 a.reportlink{
-  color:blue;
+  color: blue;
 }
