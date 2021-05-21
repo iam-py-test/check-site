@@ -16,7 +16,7 @@ var checksite = {
               
               if(times < 20){
                 times++
-            console.log(split[t] === split[t].slice(0,-1))
+            console.log(split[t],split[t].slice(0,-1))
               }
             }
           }
