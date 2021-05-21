@@ -81,7 +81,7 @@ catch(err){
   var obj = {}
 }
         res((obj[domain]||"unknown"))
-      })
+      }).catch(function(){res(null)})
     })
   },
   getTabURL: function(){
