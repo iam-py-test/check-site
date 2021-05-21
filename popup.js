@@ -25,7 +25,7 @@ var checksite = {
   dandelioncheck:function(domain){
     return new Promise(res => {
       try{
-        fetch('https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareDomains.txt').then(async function(req){
+        fetch('https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareDomains.txt?noc=true&random=' + Math.round(Math.random()*900)).then(async function(req){
           var text = await req.text()
           var split = text.split("\n")
           for(var t = 0;t < split.length;t++){
@@ -48,7 +48,7 @@ var checksite = {
   },
   pornblock:function(domain){
    return new Promise(function(res){
-     fetch("https://raw.githubusercontent.com/iam-py-test/my_filters_001/main/porn.txt").then(async function(req){
+     fetch("https://raw.githubusercontent.com/iam-py-test/my_filters_001/main/porn.txt?noc=true&random=" + Math.round(Math.random()*900)).then(async function(req){
        var text = await req.text()
        var lines = text.split("\n");
        for(var t = 0;t < lines.length;t++){
@@ -71,7 +71,7 @@ var checksite = {
   },
   getSiteRep:function(domain){
     return new Promise(res => {
-      fetch("https://raw.githubusercontent.com/iam-py-test/site-reports-001/main/site_reports.json").then(async (req) => {
+      fetch("https://raw.githubusercontent.com/iam-py-test/site-reports-001/main/site_reports.json?noc=true&random=" + Math.round(Math.random()*900)).then(async (req) => {
         
         try{
           var text = await req.text()
