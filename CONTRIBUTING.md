@@ -1,0 +1,6 @@
+## Contrubuting
+Please be respectful to other people even if their beliefs or opinions differ from yours. <br/>
+Before opening an issue, please be sure there is not another issue open about the exact same thing. If there is, you can add your opinion or fix to that issue's comments. <br/>
+If your issue was closed as `invalid`, please avoid immediately opening another issue without correcting the problem. Doing so will result in that issue being closed as well. <br/>
+Please understand that I am only one person, and that I will not be able to respond to or correct your issue immediately. If something is important, please @ reference me in that issue and I will check it out.<br/>
+If you would like to contribute, try installing this extention and reporting bugs, or contributing to issues tagged with  ```good first issue``` or ```help wanted```.
