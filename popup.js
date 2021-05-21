@@ -13,8 +13,21 @@ var checksite = {
           }
           res(false)
         }).catch(function(err){
+          
           console.log("Error:",err)
+          fetch("/assets/urlhaus.txt").then(async function(req){
+              var text = await req.text()
+          var split = text.split("\n")
+          for(var t = 0;t < split.length;t++){
+            if(split[t].startsWith("#")){continue}
+            if(split[t].slice(0,-1) === domain){
+              res(true)
+            }
+          }
+          res(false)
+          }).catch(function(err){
           res(null);
+          })
         })
       }
       catch(err){
