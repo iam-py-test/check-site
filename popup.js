@@ -106,6 +106,9 @@ checksite.urlhaus(checksite.gethostorurl(url)).then(function(result_urlhaus){
   checksite.pornblock(checksite.gethostorurl(url)).then(function(result){
     document.getElementById('pornblock').textContent = (result===true)?"porn":(result===false)?"unrated":"unknown"
   }).catch(console.error)
+  checksite.getSiteRep(checksite.gethostorurl(url)).then(function(result){
+    document.getElementById('sitereport').textContent = result
+  })
   var urlreports = (document.querySelectorAll("a.url[data-href]")||[])
   for(var t = 0;t < urlreports.length;t++){
     urlreports[t].href = urlreports[t].getAttribute("data-href").replace("$URL",encodeURIComponent(url))
