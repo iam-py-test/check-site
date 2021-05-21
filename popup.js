@@ -9,15 +9,8 @@ var checksite = {
           for(var t = 0;t < split.length;t++){
             if(split[t].startsWith("#")){continue}
             
-            if(split[t].slice(0,-1) === domain){
+            if(split[t] === domain){
               res(true)
-            }
-            else{
-              
-              if(times < 20){
-                times++
-            console.log(split[t],split[t].slice(0,-1))
-              }
             }
           }
           res(false)
