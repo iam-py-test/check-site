@@ -69,6 +69,21 @@ var checksite = {
       return url
     }
   },
+  getSiteRep:function(domain){
+    return new Promise(res => {
+      fetch("https://raw.githubusercontent.com/iam-py-test/site-reports-001/main/site_reports.json").then(async (req) => {
+        
+        try{
+          var text = await req.text()
+        var obj = JSON.parse(text)
+            }
+catch(err){
+  var obj = {}
+}
+        res((obj[domain]||"unknown"))
+      })
+    })
+  },
   getTabURL: function(){
     return new Promise(res => {
       chrome.tabs.query({active:true,currentWindow:true},function(tab){
