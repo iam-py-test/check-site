@@ -143,11 +143,13 @@ chrome.contextMenus.onClicked.addListener(async function(data,tab){
   <body>
   <h2>Report for ${htmlencode(host)}</h2>`
   result += `<br> URLHaus: ` + (await checksite.urlhaus(host) === true)?'Detected':"Not rated"
+  console.log(result)
   result += ` <br>Dandilion Sprout's Anti-malware: ` + (await checksite.dandelioncheck(host) === true)?"Detected":"Not rated" 
   result += `
   </body>
   </html>
   `
+  console.log(result,(await checksite.dandelioncheck(host) === true)?"Detected":"Not rated" )
   var blob = new Blob([result],{type:"text/html"})
   chrome.windows.create({type:"popup",url:URL.createObjectURL(blob)})
 })
