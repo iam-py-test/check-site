@@ -134,7 +134,7 @@ chrome.contextMenus.create({title:"Check link",id:"linkcheck",contexts:["link"]}
 chrome.contextMenus.onClicked.addListener(async function(data,tab){
   console.log(data,tab,1)
   var result = ''
-  var host = window.checksite.gethostorurl
+  var host = window.checksite.gethostorurl(data.linkUrl)
   result += `
   <DOCTYPE html>
   <html>
