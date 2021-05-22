@@ -138,7 +138,7 @@ chrome.contextMenus.onClicked.addListener(async function(data,tab){
   result += "<DOCTYPE html><html><head></head><body>"
  result += `<h2>Report for ${ htmlencode(host)}</h2>`
   result += "<br> URLHaus: " 
-  result =+ (await checksite.urlhaus(host) === true)?'Detected':"Not rated"
+  result += (await checksite.urlhaus(host) === true)?'Detected':"Not rated"
   console.log(result)
   result += "<br>Dandilion Sprout's Anti-malware: "
   result += (await checksite.dandelioncheck(host) === true)?"Detected":"Not rated" 
