@@ -1,4 +1,5 @@
 var isshort = function(url){
+  console.log(url)
   // http://www.surbl.org/tld
   var host = checksite.gethostorurl(url)
   if(url.includes("google.com/url") === true){return "yes"}
