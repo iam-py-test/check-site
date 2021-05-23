@@ -28,4 +28,4 @@ var isshort = function(url){
   document.querySelectorAll(".reportlink").forEach(function(l){
     l.href = l.getAttribute("data-href").replace("$URL",encodeURIComponent(url)).replace("$HOST",encodeURIComponent(checksite.gethostorurl(url)))
   })
-}).catch(console.error)
+})().catch(console.error)
