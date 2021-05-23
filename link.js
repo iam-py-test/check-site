@@ -14,6 +14,7 @@ var isshort = function(url){
 
 (async function(){
   var url = (new URL(location).searchParams.get("url")||"")
+  console.log(url)
   document.getElementById('host').textContent = "Report for " + checksite.gethostorurl(url)
   document.getElementById('host').title = url
   document.title = "Report for link"
