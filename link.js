@@ -1,7 +1,7 @@
 var isshort = function(url){
   // http://www.surbl.org/tld
   var host = checksite.gethostorurl(url)
-  if((url||"").includes("google.com/url") === true){return "yes"}
+  if(url.includes("google.com/url") === true){return "yes"}
   var shortdomains = ["bit.ly","bit.do","ow.ly","goo.gl","x.co","rebrand.ly","tinyurl.com","t.co","is.gd","ht.ly"]
   if(shortdomains.includes(host)){
     return "yes"
