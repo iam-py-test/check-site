@@ -129,6 +129,18 @@ window.checksite = {
 var htmlencode = function(data){
   return data.replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll("\"","&quot;").replaceAll("'","&#39;").replaceAll("\\","&#92;").replaceAll("$","&#36;").replaceAll("=","&#61;").replaceAll("%","&#37;")
 }
+var isshort = function(url){
+  // http://www.surbl.org/tld
+  var host = checksite.gethostorurl(url)
+  if((url||"").includes("google.com/url") === true){return "yes"}
+  var shortdomains = ["bit.ly","bit.do","ow.ly","goo.gl","x.co","rebrand.ly","tinyurl.com","t.co","is.gd","ht.ly"]
+  if(shortdomains.includes(host)){
+    return "yes"
+  }
+  else{
+    return "no"
+  }
+}
 
 chrome.contextMenus.create({title:"Check link",id:"linkcheck",contexts:["link"]})
 chrome.contextMenus.onClicked.addListener(async function(data,tab){
@@ -143,6 +155,7 @@ chrome.contextMenus.onClicked.addListener(async function(data,tab){
   console.log(result)
   result += "<br>Dandilion Sprout's Anti-malware: "
   result += (await checksite.dandelioncheck(host) === true)?"Detected":"Not rated" 
+  result += "<br> Shortened url: " + isshort(data.linkUrl)
   result += "</body></html>"
   var blob = new Blob([result],{type:"text/html"})
   chrome.windows.create({type:"popup",url:URL.createObjectURL(blob)})
