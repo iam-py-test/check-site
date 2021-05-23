@@ -1,10 +1,28 @@
-<DOCTYPE html>
+<!DOCTYPE html>
   <html>
     <head>
-      
+      <style>
+        .reportlink{
+          color:blue;
+        }
+      </style>
     </head>
     <body>
       <h1 id='host'></h1>
+      <p>URLHaus: <span id="urlhaus">loading</span></p>
+      <p>Dandilion Sprout's Anti-malware: <span id='dand'>loading</span></p>
+      <p>Shortened url: <span id='short'>Unknown</span></p>
+      <div>
+        <h3>Reports on this link</h3>
+        <a class="reportlink url" data-href="https://www.siteadvisor.com/sitereport.html?url=$URL">McAfee</a><br>
+        <a class="reportlink url" data-href="https://safeweb.norton.com/report/show?url=$URL">Norton LifeLock</a><br>
+        <a class="reportlink url" data-href="https://transparencyreport.google.com/safe-browsing/search?url=$URL">Google Safe Browsing</a><br>
+        <a class="reportlink host" data-href="https://sitecheck.sucuri.net/results/$HOST">Sucuri SiteCheck</a><br>
+        <a class="reportlink host" data-href="https://www.mywot.com/en/scorecard/$HOST">MyWOT</a><br>
+        <a class="reportlink host" data-href="http://www.urlvoid.com/scan/$HOST">URLVoid</a>
+      </div>
+      <script src="core.js"></script>
+      <script src="link.js"></script>
     </body>
   </html>
   
