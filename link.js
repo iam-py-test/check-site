@@ -1,4 +1,6 @@
-var isshort = function(url){
+
+(async function(){
+  var isshort = function(url){
   console.log(url)
   // http://www.surbl.org/tld
   var host = checksite.gethostorurl(url)
@@ -12,7 +14,6 @@ var isshort = function(url){
   }
 }
 
-(async function(){
   var url = (new URL(location).searchParams.get("url")||"")
   console.log(url)
   document.getElementById('host').textContent = "Report for " + checksite.gethostorurl(url)
