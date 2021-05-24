@@ -155,7 +155,7 @@ checksite.urlhaus(checksite.gethostorurl(url)).then(function(result_urlhaus){
   })
   var urlreports = (document.querySelectorAll("a.url[data-href]")||[])
   for(var t = 0;t < urlreports.length;t++){
-    urlreports[t].href = urlreports[t].getAttribute("data-href").replace("$URL",encodeURIComponent(url))
+    urlreports[t].href = urlreports[t].getAttribute("data-href").replace("$URL",encodeURIComponent(url)).replace("$HOST",encodeURI(checksite.gethostorurl(url)))
   }
 }
 main().catch(function(err){
