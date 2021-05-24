@@ -1,5 +1,5 @@
 var hostslists = {
-  lists:new Map(["BlockListProject Fraud","https://raw.githubusercontent.com/blocklistproject/Lists/master/fraud.txt"]),
+  lists:new Map([["BlockListProject Fraud","https://raw.githubusercontent.com/blocklistproject/Lists/master/fraud.txt"]]),
   loadHOSTS:function(domain,list){
     return new Promise(res => {
       fetch(list).then(async function(req){
