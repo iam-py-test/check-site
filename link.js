@@ -32,12 +32,12 @@
   hostslists.lists.forEach(async function(item,name){
     console.log(item,name)
     hostslists.loadHOSTS(checksite.gethostorurl(url),item).then(function(result){
-      var p = document.createElement("p")
-      p.textContent = name + ": " 
-      p.innerHTML += '&nbsp;'
+      var p = document.createElement("span")
+      p.textContent = name + ": "
       p.textContent += (result === true)?"Detected":"Not detected"
       console.log(p.textContent,result)
       document.getElementById('add').appendChild(p)
+      document.getElementById('add').appendChild(document.createElement('br'))
     })
   })
 })().catch(console.error)
