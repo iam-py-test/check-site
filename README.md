@@ -10,3 +10,6 @@ No. If you want to block malware websites, you can install the browser extention
 #### What is _unrated_ vs _safe_?
 If Check Site's internal ratings says _unrated_, this means it does not know if the site is safe or not. If it says _safe_, this means the site has been reviewed and is safe. <br/>
 Note that _very few_ sites are rated safe because I have to manually review the site, and that takes time.
+
+#### Installing Check Site
+To install Check site, you will need to download it off of GitHub. For more information, see [installing](https://github.com/iam-py-test/check-site/wiki/Installing).
