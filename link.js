@@ -34,6 +34,7 @@
     hostslists.loadHOSTS(checksite.gethostorurl(url),item).then(function(result){
       var p = document.createElement("p")
       p.textContent = name + ": " 
+      p.innerHTML += '&nbsp;'
       p.textContent += (result === true)?"Detected":"Not detected"
       console.log(p.textContent,result)
       document.getElementById('add').appendChild(p)
