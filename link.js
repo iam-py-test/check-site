@@ -19,6 +19,7 @@
   document.getElementById('host').textContent = "Report for " + checksite.gethostorurl(url)
   document.getElementById('host').title = url
   document.title = "Report for link"
+  if(new URL(location).searchParams.has('siterep')){document.title = "Report for site"}
   checksite.urlhaus(checksite.gethostorurl(url)).then(function(result){
     document.getElementById("urlhaus").textContent = (result===true)?"Detected":"Not detected"
   })
