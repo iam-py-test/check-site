@@ -29,4 +29,8 @@
   document.querySelectorAll(".reportlink").forEach(function(l){
     l.href = l.getAttribute("data-href").replace("$URL",encodeURIComponent(url)).replace("$HOST",encodeURIComponent(checksite.gethostorurl(url)))
   })
+  hostslists.lists.forEach(async function(item){
+    console.log(item)
+    hostslists.loadHOSTS(checksite.gethostorurl(url),item)
+  })
 })().catch(console.error)
