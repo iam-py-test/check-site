@@ -132,10 +132,7 @@ var hostslists = {
   lists:new Map([["The BlockList Project fraud","https://raw.githubusercontent.com/blocklistproject/Lists/master/fraud.txt"],["The BlockList Project malware","https://raw.githubusercontent.com/blocklistproject/Lists/master/malware.txt"],["The BlockList Project phishing","https://raw.githubusercontent.com/blocklistproject/Lists/master/phishing.txt"]]),
   loadHOSTS:function(domain,list){
     return new Promise(res => {
-      var h = new Headers()
-      h.append('pragma', 'no-cache');
-      h.append('cache-control', 'no-cache');
-      fetch(list,{headers:h}).then(async function(req){
+      fetch(list + (list.includes("?")?"&randomnoc=" + Math.round(Math.random()*900):"?randomnoc=" + Math.round(Math.random()*1000))).then(async function(req){
         var text = await req.text()
         var stext = text.split("\n")
         for(var t = 0;t < stext.length;t++){
