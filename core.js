@@ -129,10 +129,13 @@ window.checksite = {
 
 
 var hostslists = {
-  lists:new Map([["The BlockList Project fraud","https://raw.githubusercontent.com/blocklistproject/Lists/master/fraud.txt"],["The BlockList Project malware","https://raw.githubusercontent.com/blocklistproject/Lists/master/malware.txt"],["The BlockList Project Phishing","https://raw.githubusercontent.com/blocklistproject/Lists/master/phishing.txt"]]),
+  lists:new Map([["The BlockList Project fraud","https://raw.githubusercontent.com/blocklistproject/Lists/master/fraud.txt"],["The BlockList Project malware","https://raw.githubusercontent.com/blocklistproject/Lists/master/malware.txt"],["The BlockList Project phishing","https://raw.githubusercontent.com/blocklistproject/Lists/master/phishing.txt"]]),
   loadHOSTS:function(domain,list){
     return new Promise(res => {
-      fetch(list).then(async function(req){
+      var h = new Headers()
+      h.append('pragma', 'no-cache');
+      h.append('cache-control', 'no-cache');
+      fetch(list,{headers:h}).then(async function(req){
         var text = await req.text()
         var stext = text.split("\n")
         for(var t = 0;t < stext.length;t++){
