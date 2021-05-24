@@ -13,5 +13,5 @@ If Check Site's internal ratings says _unrated_, this means it does not know if 
 Note that _very few_ sites are rated safe because I have to manually review the site, and that takes time.
 
 #### Installing Check Site
-To install Check site, you will need to download it off of GitHub. For more information, see [installing](https://github.com/iam-py-test/check-site/wiki/Installing).
+To install Check site, you will need to download it off of GitHub. For more information, see [installing](https://github.com/iam-py-test/check-site/wiki/Installing).<br/>
 If someone knows how to upload it to the Chrome Web Store or addons.mozilla.org, please let me know.
