@@ -153,7 +153,7 @@ checksite.urlhaus(checksite.gethostorurl(url)).then(function(result_urlhaus){
     if(result === 'site-safe'){document.getElementById('sitereport').title = 'This site is safe, but some content on it may not'}
     document.getElementById('sitereport').textContent = (result === "unknown")?"Not rated":(result === "safe")?"Safe":(result === "site-safe")?"Caution":(result === "malware")?"Malware":"Unknown"
   })
-  var urlreports = (document.querySelectorAll("a.url[data-href]")||[])
+  var urlreports = (document.querySelectorAll("a.reportlink[data-href]")||[])
   for(var t = 0;t < urlreports.length;t++){
     urlreports[t].href = urlreports[t].getAttribute("data-href").replace("$URL",encodeURIComponent(url)).replace("$HOST",encodeURI(checksite.gethostorurl(url)))
   }
