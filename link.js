@@ -29,8 +29,12 @@
   document.querySelectorAll(".reportlink").forEach(function(l){
     l.href = l.getAttribute("data-href").replace("$URL",encodeURIComponent(url)).replace("$HOST",encodeURIComponent(checksite.gethostorurl(url)))
   })
-  hostslists.lists.forEach(async function(item){
-    console.log(item)
-    hostslists.loadHOSTS(checksite.gethostorurl(url),item)
+  hostslists.lists.forEach(async function(item,name){
+    console.log(item,name)
+    hostslists.loadHOSTS(checksite.gethostorurl(url),item).then(function(result){
+      var p = document.createElement("p")
+      p.textContent = name + ":" + (result === true)?"Detected":"Not detected"
+      document.getElementById('add').appendChild(p)
+    })
   })
 })().catch(console.error)
