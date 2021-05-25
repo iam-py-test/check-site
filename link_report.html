@@ -1,11 +1,7 @@
 <!DOCTYPE html>
   <html>
     <head>
-      <style>
-        .reportlink{
-          color:blue;
-        }
-      </style>
+    <link rel="stylesheet" href="link_report.css">
     </head>
     <body>
       <h1 id='host'></h1>
@@ -14,10 +10,9 @@
       <p>Shortened url: <span id='short'>Unknown</span></p>
       <div id="add">
         <h3>Additional reports</h3>
-        
+     
       </div>
-      <div>
-        <h3 id='titlereplink'>Reports on this link</h3>
+      <h3 id='titlereplink'>Reports on this link</h3>
         <a class="reportlink url" data-href="https://www.siteadvisor.com/sitereport.html?url=$URL" target="_blank">McAfee</a><br>
         <a class="reportlink url" data-href="https://safeweb.norton.com/report/show?url=$URL" target="_blank">Norton LifeLock</a><br>
         <a class="reportlink host" data-href="https://safeweb.norton.com/reviews?url=$HOST">Norton Community Reviews</a><br>
@@ -25,7 +20,6 @@
         <a class="reportlink host" data-href="https://sitecheck.sucuri.net/results/$HOST" target="_blank">Sucuri SiteCheck</a><br>
         <a class="reportlink host" data-href="https://www.mywot.com/en/scorecard/$HOST" target="_blank">MyWOT</a><br>
         <a class="reportlink host" data-href="https://www.urlvoid.com/scan/$HOST" target="_blank">URLVoid</a>
-      </div>
       <script src="core.js"></script>
       <script src="link.js"></script>
     </body>
