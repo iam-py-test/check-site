@@ -1,6 +1,6 @@
-.report_link{
+.reportlink{
   color:blue;
 }
-.report_link:active{
+.reportlink:active{
   color:red;
 }
