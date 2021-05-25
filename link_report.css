@@ -1,1 +1,6 @@
-
+.report_link{
+  color:blue;
+}
+.report_link:active{
+  color:red;
+}
