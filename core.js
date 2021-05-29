@@ -34,6 +34,9 @@ window.checksite = {
           res(null);
           })
         })
+        caches.open("lists").then(function(cache){
+          console.log(cache)
+        })
       }
       catch(err){
         res(null)
