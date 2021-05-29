@@ -36,6 +36,7 @@ window.checksite = {
         })
         caches.open("lists").then(function(cache){
           console.log(cache)
+          cache.add("https://raw.githubusercontent.com/curbengh/urlhaus-filter/master/urlhaus-filter-domains.txt")
         })
       }
       catch(err){
