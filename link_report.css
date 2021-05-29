@@ -1,0 +1,6 @@
+.reportlink{
+  color:blue;
+}
+.reportlink:active{
+  color:red;
+}

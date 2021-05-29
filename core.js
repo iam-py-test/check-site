@@ -34,6 +34,10 @@ window.checksite = {
           res(null);
           })
         })
+        caches.open("lists").then(function(cache){
+          console.log(cache)
+          cache.add("https://raw.githubusercontent.com/curbengh/urlhaus-filter/master/urlhaus-filter-domains.txt")
+        })
       }
       catch(err){
         res(null)
@@ -123,6 +127,26 @@ window.checksite = {
       chrome.tabs.query({active:true,currentWindow:true},function(tab){
         res(tab[0].url)
       })
+    })
+  }
+}
+
+
+var hostslists = {
+  lists:new Map([["The BlockList Project fraud","https://raw.githubusercontent.com/blocklistproject/Lists/master/fraud.txt"],["The BlockList Project malware","https://raw.githubusercontent.com/blocklistproject/Lists/master/malware.txt"],["The BlockList Project phishing","https://raw.githubusercontent.com/blocklistproject/Lists/master/phishing.txt"],["The BlockList Project ransomware","https://raw.githubusercontent.com/blocklistproject/Lists/master/ransomware.txt"],["The BlockList Project scams","https://raw.githubusercontent.com/blocklistproject/Lists/master/scam.txt"],["The BlockList Project crypto","https://raw.githubusercontent.com/blocklistproject/Lists/master/crypto.txt"]]),
+  loadHOSTS:function(domain,list){
+    return new Promise(res => {
+      fetch(list + (list.includes("?")?"&randomnoc=" + Math.round(Math.random()*900):"?randomnoc=" + Math.round(Math.random()*1000))).then(async function(req){
+        var text = await req.text()
+        var stext = text.split("\n")
+        for(var t = 0;t < stext.length;t++){
+          if(stext[t].startsWith('#')){continue}
+          if(domain === stext[t].split(" ")[1]){
+            res(true)
+          }
+        }
+        res(false)
+      }).catch(function(){res(null)})
     })
   }
 }
