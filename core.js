@@ -76,24 +76,44 @@ window.checksite = {
   },
   pornblock:function(domain){
     /*fetch my pornography blocklist*/
-    //please report problems with this blocklist to https://github.com/iam-py-test/my_filters_001
+    //please report problems with this blocklist and unblocked domains to https://github.com/iam-py-test/my_filters_001
+    //todo: add link to the support websites for each list 
    return new Promise(function(res){
-     //fetch the list off GitHub
-     //todo: create and fetch a domains-only version
-     fetch("https://raw.githubusercontent.com/iam-py-test/my_filters_001/main/porn.txt?noc=true&random=" + Math.round(Math.random()*900)).then(async function(req){
+     //fetch the list off GitHub - for easy parsing we are using the pure (no comments - just entries) HOSTS version of the porn blocklist
+     //todo: store this for offline use
+     fetch("https://raw.githubusercontent.com/iam-py-test/my_filters_001/main/Alternative%20list%20formats/porn_pure_hosts.txt?noc=true&random=" + Math.round(Math.random()*900)).then(async function(req){
+       if(req.ok !== true){
+         //if something went wrong, but no error was thrown 
+         //return null and log the request for debugging
+         console.log("Req status error:",req)
+         res(null)
+         //exit the function to prevent errors
+         return null;
+       }
+       //get the text and split it up into an array based on lines
        var text = await req.text()
        var lines = text.split("\n");
        for(var t = 0;t < lines.length;t++){
-         //if it is a comment or a url, ignore it
-         if(lines[t].startsWith('!') || lines[t].startsWith("||")){continue}
-         //unlike URLHaus, this needs the slice
-         if(lines[t].slice(0,-1) === domain){
+         // we are fetching the pure porn hosts, so comments are not a worry
+         try{
+           //split it - the part that is important is the domain part, the other part is just 127.0.0.1
+         if(lines[t].split(" ")[1] === domain){
            res(true)
          }
+         }
+         catch(err){
+           //be ready for weird things
+           //i.e. a random line with no content, or an invalid line
+         }
        }
+       //if nothing happened, assume that there was no match
        res(false)
      })
-   }).catch(function(err){console.log("Error:",err);res(null)})
+   }).catch(function(err){
+     //handle errors (like the network going out) by logging them and returning null
+     console.log("Error:",err);
+     res(null)
+   })
   },
   gethostorurl:function gethostorurl(url){
     /*a function to get the hostname out of a url, and if it can not be fetched, return the url
