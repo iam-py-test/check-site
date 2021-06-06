@@ -1,4 +1,47 @@
 window.checksite = {
+  private:{
+    isLocalhost(url){
+		try{
+		const u = new URL(url);
+		
+		}
+		catch(err){
+			//if it is not a real URL, than it is not localhost
+			return false
+		}
+		try{
+			const u = new URL(url)
+			if(u.protocol === "data:" ||  (u.protocol !== "http:" & u.protocol !== "https:")){
+				//if it is not https: or http:
+				return false;
+			}
+			else{
+				if(u.hostname === "127.0.0.1"){
+					//if it is 127.0.0.1, it is localhost even thought it would fail our test
+					//so we return true
+					return true;
+				}
+				else{
+					if(u.host === "localhost"){
+						//if it is plain localhost
+						return true;
+					}
+					else{
+					//if it is http: or https: and it is not 127.0.0.1 or plain localhost
+					//split it into diffrent parts
+				var urlParts = u.hostname.split(".")
+				//if the last part is localhost. This should be true for all subdomains of localhost, but untrue for anyone else
+				return urlParts[urlParts.length - 1] === "localhost";
+					}
+				}
+			}
+		}
+		catch(err){
+			return false;
+		}
+	}
+	
+  },
   urlhaus:function(domain){
     /*this function checks a domain against the domains-only version of URLHaus*/
     return new Promise(res => {
