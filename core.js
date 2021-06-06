@@ -45,8 +45,8 @@ window.checksite = {
 	
 isSecureConnection(url){
 	try{
-		const url = new URL(url)
-		return url.protocol !== "http:" || checksite.private.isLocalhost(url) === true
+		var purl = new URL(url)
+		return purl.protocol !== "http:" || checksite.private.isLocalhost(url) === true
 	}
 	catch(err){
 		console.log("Error: ",err)
