@@ -49,6 +49,7 @@ isSecureConnection(url){
 		return url.protocol !== "http:" || checksite.private.isLocalhost(url) === true
 	}
 	catch(err){
+		console.log("Error: ",err)
 		return false
 	}
 },
