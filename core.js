@@ -42,6 +42,17 @@ window.checksite = {
 	}
 	
   },
+	
+isSecureConnection(url){
+	try{
+		const url = new URL(url)
+		return url.protocol === "http:" & checksite.private.isLocalhost(url) === false
+	}
+	catch(err){
+		return false
+	}
+},
+	
   urlhaus:function(domain){
     /*this function checks a domain against the domains-only version of URLHaus*/
     return new Promise(res => {
