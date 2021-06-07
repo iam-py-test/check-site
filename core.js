@@ -46,11 +46,17 @@ window.checksite = {
 isSecureConnection(url){
 	try{
 		var purl = new URL(url)
-		return purl.protocol !== "http:" || checksite.private.isLocalhost(url) === true
+		if(purl.protocol === 'https:' || checksite.private.isLocalhost(url) === true){
+			return true
+		}
+		if(purl.protocol === 'http:'){
+			return false
+		}
+		return "unknown"
 	}
 	catch(err){
 		console.log("Error: ",err)
-		return false
+		return "unknown"
 	}
 },
 	
