@@ -22,7 +22,7 @@ checksite.urlhaus(checksite.gethostorurl(url)).then(function(result_urlhaus){
     if(result === 'localhost'){document.getElementById('sitereport').title = "This site is local to your computer"}
     document.getElementById('sitereport').textContent = (result === "unknown")?"Not rated":(result === "safe")?"Safe":(result === "site-safe")?"Caution":(result === "malware")?"Malware":(result === 'localhost')?"Local":"Unknown"
   })
-  document.getElementById('connect').textContent = (checksite.isSecureConnection(url) === true)?"Secure":"Insecure"
+  document.getElementById('connect').textContent = (checksite.isSecureConnection(url) === true)?"Secure":(checksite.isSecureConnection(url) === "unknown")?"Unknown":"Insecure"
   var urlreports = (document.querySelectorAll("a.reportlink[data-href]")||[])
   for(var t = 0;t < urlreports.length;t++){
     urlreports[t].href = urlreports[t].getAttribute("data-href").replace("$URL",encodeURIComponent(url)).replace("$HOST",encodeURI(checksite.gethostorurl(url)))
