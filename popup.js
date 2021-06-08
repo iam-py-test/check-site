@@ -10,6 +10,7 @@ checksite.urlhaus(checksite.gethostorurl(url)).then(function(result_urlhaus){
 }).catch(console.error)
   /*check the site against Dandelion Sprout's Antimalware list*/
   checksite.dandelioncheck(checksite.gethostorurl(url)).then(function(result){
+    console.log(result)
     document.getElementById('dand').textContent = (result === true)?"malware":(result === false)?"unrated":"unknown"
   }).catch(console.error)
   /*check the site against my porn blocklist*/
