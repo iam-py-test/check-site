@@ -92,7 +92,10 @@ isSecureConnection(url){
           }
           res(false)
           }).catch(function(err){
+		 
+		
           res(null);
+		  
           })
         })
         caches.open("lists").then(function(cache){
@@ -101,6 +104,7 @@ isSecureConnection(url){
         })
       }
       catch(err){
+	     
         res(null)
       }
     })
@@ -111,7 +115,13 @@ isSecureConnection(url){
       try{
         //fetch it
         fetch('https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareDomains.txt?noc=true&random=' + Math.round(Math.random()*900)).then(async function(req){
-          var text = await req.text()
+          try{
+		  var c = await caches.open("assets")
+		  c.add('https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareDomains.txt?noc=true&random=' + Math.round(Math.random()*900))
+	  }
+		catch(err){
+		}
+		var text = await req.text()
           var split = text.split("\n")
           for(var t = 0;t < split.length;t++){
             if(split[t].startsWith("#")){continue}
@@ -123,11 +133,35 @@ isSecureConnection(url){
             }
           }
           res(false)
+		
         }).catch(function(err){
           //if there is an error, return null
           //to do: add to assets for offline use
           console.log("Error:",err)
+		try{
+			caches.match(function(req){
+				if(req === undefined){
+					res(null)
+				}
+				else{
+					var text = await req.text()
+          				var split = text.split("\n")
+          				for(var t = 0;t < split.length;t++){
+            				if(split[t].startsWith("#")){continue}
+            				//unlike URLHaus, this needs the slice
+            				if(split[t].slice(0,-1) === domain){
+            				  //if there is a match
+              				res(true)
+              				break;
+            					}
+          				}
+          				res(false)
+				}
+			})
+		}
+		catch(err){
           res(null);
+		}
         })
       }
       catch(err){
