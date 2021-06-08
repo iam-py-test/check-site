@@ -157,7 +157,7 @@ isSecureConnection(url){
           				}
           				res(false)
 				}
-			})
+			}).catch(console.warn)
 		}
 		catch(err){
           res(null);
