@@ -117,7 +117,7 @@ isSecureConnection(url){
         fetch('https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareDomains.txt?noc=true&random=' + Math.round(Math.random()*900)).then(async function(req){
           try{
 		  var c = await caches.open("assets")
-		  c.add('https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareDomains.txt?noc=true&random=' + Math.round(Math.random()*900))
+		  c.add('https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareDomains.txt?noc=true')
 	  }
 		catch(err){
 		}
@@ -139,7 +139,8 @@ isSecureConnection(url){
           //to do: add to assets for offline use
           console.log("Error:",err)
 		try{
-			caches.match(async function(req){
+			caches.match('https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareDomains.txt?noc=true').then(async function(req){
+				console.log(req)
 				if(req === undefined){
 					res(null)
 				}
