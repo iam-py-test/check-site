@@ -109,7 +109,7 @@ isSecureConnection(url){
       }
     })
   },
-  dandelioncheck:function(domain){
+  dandelioncheck:async function(domain){
     /*this function checks a domain against DandelionSprout's Anti-malware list*/
     return new Promise(res => {
       try{
@@ -134,12 +134,12 @@ isSecureConnection(url){
           }
           res(false)
 		
-        }).catch(function(err){
+        }).catch(async function(err){
           //if there is an error, return null
           //to do: add to assets for offline use
           console.log("Error:",err)
 		try{
-			caches.match(function(req){
+			caches.match(async function(req){
 				if(req === undefined){
 					res(null)
 				}
