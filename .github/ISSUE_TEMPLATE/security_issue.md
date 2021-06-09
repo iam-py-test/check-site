@@ -1,4 +1,4 @@
- ---
+---
 
 name: Security issue report
 about: Create a report to help us fix this security issue
