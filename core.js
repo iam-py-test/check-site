@@ -1,3 +1,7 @@
+/*
+this script contains the functions used by the popup and the link report
+*/
+
 window.checksite = {
   private:{
     isLocalhost(url){
@@ -104,13 +108,17 @@ isSecureConnection(url){
         })
       }
       catch(err){
-	     
+	 //on an error, return null    
         res(null)
       }
     })
   },
   dandelioncheck:async function(domain){
     /*this function checks a domain against DandelionSprout's Anti-malware list*/
+	  /*
+	  args: a domain
+	  returns: if that domain is blocked in DandelionSprout's antimalware list
+	  */
     return new Promise(res => {
       try{
         //fetch it
@@ -135,16 +143,17 @@ isSecureConnection(url){
           res(false)
 		
         }).catch(async function(err){
-          //if there is an error, return null
-          //to do: add to assets for offline use
+          //if there is an error, use the cached version
           console.log("Error:",err)
 		try{
 			caches.match('https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareDomains.txt?noc=true').then(async function(req){
 				console.log(req)
 				if(req === undefined){
+					//if it is not cached (i.e. first run) return null
 					res(null)
 				}
 				else{
+					//if it is cached, parse it normally
 					var text = await req.text()
           				var split = text.split("\n")
           				for(var t = 0;t < split.length;t++){
@@ -161,6 +170,7 @@ isSecureConnection(url){
 			}).catch(console.warn)
 		}
 		catch(err){
+			//if something goes wrong, return null
           res(null);
 		}
         })
