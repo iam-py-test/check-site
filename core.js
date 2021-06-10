@@ -231,7 +231,8 @@ isSecureConnection(url){
      //handle errors (like the network going out) by logging them and using the cached version
 	   (async function(){
 		   caches.match("https://raw.githubusercontent.com/iam-py-test/my_filters_001/main/Alternative%20list%20formats/porn_pure_hosts.txt?noc=true").then(async function(req){
-			if(req === undefined || req === null){
+			console.log(req)
+			   if(req === undefined || req === null){
 				//if it is not cached
 				res(null)
 			}
@@ -254,7 +255,8 @@ isSecureConnection(url){
        //if nothing happened, assume that there was no match
        res(false)
 			   }
-		   }).catch(function(){
+		   }).catch(function(err){
+			   console.log(err)
 			   res(null)
 		   })
 	   })().catch(function(){
