@@ -2,7 +2,7 @@
   "name":"Check site",
   "description":"Get information on sites you visit from common blocklists and antivirus providers",
   "background":{
-    "scripts":["background.js"]
+    "scripts":["background.js","core.js"]
   },
   "permissions":["tabs","webNavigation","contextMenus"],
   "browser_action":{
