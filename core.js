@@ -1,9 +1,21 @@
 /*
-this script contains the functions used by the popup and the link report
+this script contains the functions used by the popup, background and the link report
+Last Updated: 10/6/2021
 */
 
 window.checksite = {
   private:{
+	  updateLists(){
+		  var lists = ["https://raw.githubusercontent.com/curbengh/urlhaus-filter/master/urlhaus-filter-domains.txt","https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareDomains.txt?noc=true","https://raw.githubusercontent.com/iam-py-test/my_filters_001/main/Alternative%20list%20formats/porn_pure_hosts.txt?noc=true","https://raw.githubusercontent.com/iam-py-test/site-reports-001/main/site_reports.json?noc=true"]
+		  lists.forEach(async function(url){
+		  try{
+			  const c = await caches.open("assets")
+			  c.add(url)
+		  }
+		  catch(err){
+		  }
+		  })
+	  },
     isLocalhost(url){
 		try{
 		const u = new URL(url);
@@ -102,7 +114,7 @@ isSecureConnection(url){
 		  
           })
         })
-        caches.open("lists").then(function(cache){
+        caches.open("assets").then(function(cache){
           console.log(cache)
           cache.add("https://raw.githubusercontent.com/curbengh/urlhaus-filter/master/urlhaus-filter-domains.txt")
         })
