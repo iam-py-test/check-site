@@ -228,9 +228,39 @@ isSecureConnection(url){
        res(false)
      })
    }).catch(function(err){
-     //handle errors (like the network going out) by logging them and returning null
+     //handle errors (like the network going out) by logging them and using the cached version
+	   (async function(){
+		   caches.match("https://raw.githubusercontent.com/iam-py-test/my_filters_001/main/Alternative%20list%20formats/porn_pure_hosts.txt?noc=true").then(async function(req){
+			if(req === undefined || req === null){
+				//if it is not cached
+				res(null)
+			}
+			   else{
+				    var text = await req.text()
+       var lines = text.split("\n");
+       for(var t = 0;t < lines.length;t++){
+         // we are fetching the pure porn hosts, so comments are not a worry
+         try{
+           //split it - the part that is important is the domain part, the other part is just 127.0.0.1
+         if(lines[t].split(" ")[1] === domain){
+           res(true)
+         }
+         }
+         catch(err){
+           //be ready for weird things
+           //i.e. a random line with no content, or an invalid line
+         }
+       }
+       //if nothing happened, assume that there was no match
+       res(false)
+			   }
+		   }).catch(function(){
+			   res(null)
+		   })
+	   })().catch(function(){
+		   res(null)
+	   })
      console.log("Error:",err);
-     res(null)
    })
   },
   gethostorurl:function gethostorurl(url){
