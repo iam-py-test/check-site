@@ -7,4 +7,4 @@ chrome.contextMenus.onClicked.addListener(async function(data,tab){
   console.log(data,tab,1)
 chrome.windows.create({type:"popup","url":"link_report.html?url=" + encodeURIComponent(data.linkUrl)})
 })
-checksite.updateLists().catch(console.warn)
+checksite.private.updateLists().catch(console.warn)
