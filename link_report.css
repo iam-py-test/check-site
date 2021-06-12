@@ -4,3 +4,6 @@
 .reportlink:active{
   color:red;
 }
+a:not(.disabled):not(.reportlink){
+  color:blue;
+}

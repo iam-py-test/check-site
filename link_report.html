@@ -7,7 +7,9 @@
       <h2 id='host'></h2>
       <p>URLHaus: <span id="urlhaus">loading</span></p>
       <p>Dandilion Sprout's Anti-malware: <span id='dand'>loading</span></p>
+      <p>Check site rating: <span id="rating"></span></p>
       <p>Shortened url: <span id='short'>Unknown</span></p>
+      <p id="details">Details</p>
       <div id="add">
         <h3>Additional reports</h3>
      
@@ -19,7 +21,9 @@
         <a class="reportlink url" data-href="https://transparencyreport.google.com/safe-browsing/search?url=$URL" target="_blank">Google Safe Browsing</a><br>
         <a class="reportlink host" data-href="https://sitecheck.sucuri.net/results/$HOST" target="_blank">Sucuri SiteCheck</a><br>
         <a class="reportlink host" data-href="https://www.mywot.com/en/scorecard/$HOST" target="_blank">MyWOT</a><br>
-        <a class="reportlink host" data-href="https://www.urlvoid.com/scan/$HOST" target="_blank">URLVoid</a>
+        <a class="reportlink host" data-href="https://www.urlvoid.com/scan/$HOST" target="_blank">URLVoid</a><br>
+        <a class="reportlink host" data-href="https://www.virustotal.com/gui/domain/$HOST/detection">VirusTotal</a><br>
+      <a href="https://github.com/iam-py-test/check-site/issues">Report an issue</a>
       <script src="core.js"></script>
       <script src="link.js"></script>
     </body>
