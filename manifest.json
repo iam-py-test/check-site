@@ -9,7 +9,7 @@
     "default_popup":"popup.html"
   },
   "author":"iam-py-test & contributors",
-  "homepage":"https://github.com/iam-py-test/check-site",
+  "homepage_url":"https://github.com/iam-py-test/check-site",
   "version":"1.2.1",
   "manifest_version":2
 }
