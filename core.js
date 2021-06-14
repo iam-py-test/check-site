@@ -63,7 +63,6 @@ window.checksite = {
 	getOwner(domain){
 		return new Promise(res => {
 			fetch("https://raw.githubusercontent.com/iam-py-test/site-reports-001/main/ownership.json").then(async function(req){
-				console.log(req.json())
 				var owners = await req.json()
 				console.log(domain,owners)
 				res((owners[domain]||null))
