@@ -3,6 +3,7 @@ on: [push]
 jobs:
   URLHaus:
     name: Update URLHaus
+    runs-on: ubuntu-latest
     steps:
       - shell: bash
         run: |
