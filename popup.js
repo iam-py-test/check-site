@@ -4,6 +4,9 @@ window.main = async function(){
   var url = await checksite.getTabURL()
   console.log(checksite.gethostorurl(url),url)
 document.getElementById('hostname').textContent = checksite.gethostorurl(url)
+  document.getElementById('hostname').onclick = function(){
+    
+  }
   /*check the site against URLHaus*/
 checksite.urlhaus(checksite.gethostorurl(url)).then(function(result_urlhaus){
   document.getElementById('urlhaus').textContent = (result_urlhaus === true)?"malware":(result_urlhaus === false)?"unrated":"unknown"
