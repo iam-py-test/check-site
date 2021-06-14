@@ -5,12 +5,15 @@ window.main = async function(){
   console.log(checksite.gethostorurl(url),url)
 document.getElementById('hostname').textContent = checksite.gethostorurl(url)
   document.getElementById('hostname').onclick = async function(){
-    if(document.getElementById("1_own") !== null){return;}
+    if(document.getElementById("1_own") !== null){
+      document.getElementById("1_own").remove()
+      return;
+    }
     var ownerDiv = document.createElement('div')
     ownerDiv.id = "1_own"
     ownerDiv.innerText = `
-    Domain owned by: ${(checksite.getOwner(checksite.gethostorurl(url))||"unknown")}
-    Verified login: ${(checksite.verifiedS(checksite.gethostorurl(url))||"false")}
+    Domain owned by: ${(await checksite.getOwner(checksite.gethostorurl(url))||"unknown")}
+    Verified login: ${(await checksite.verifiedS(checksite.gethostorurl(url))||"false")}
     `
     document.body.appendChild(ownerDiv)
   }
