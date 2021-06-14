@@ -4,8 +4,15 @@ window.main = async function(){
   var url = await checksite.getTabURL()
   console.log(checksite.gethostorurl(url),url)
 document.getElementById('hostname').textContent = checksite.gethostorurl(url)
-  document.getElementById('hostname').onclick = function(){
-    
+  document.getElementById('hostname').onclick = async function(){
+    if(document.getElementById("1_own") !== null){return;}
+    var ownerDiv = document.createElement('div')
+    ownerDiv.id = "1_own"
+    ownerDiv.innerText = `
+    Domain owned by: ${(checksite.getOwner(checksite.gethostorurl(url))||"unknown")}
+    Verified login: ${(checksite.verifiedS(checksite.gethostorurl(url))||"false")}
+    `
+    document.body.appendChild(ownerDiv)
   }
   /*check the site against URLHaus*/
 checksite.urlhaus(checksite.gethostorurl(url)).then(function(result_urlhaus){
