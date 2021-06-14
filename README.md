@@ -1,7 +1,7 @@
 # check-site
 Get a report from common antivirus providers and blocklists
 
-Note: You may experence problems with opening links in another window when using uBlock Origin for popup blocking until [#1616](https://github.com/uBlockOrigin/uBlock-issues/issues/1616) is resolved. 
+Note: You may experence problems with opening links in another window via the context menu when using uBlock Origin for popup blocking until [#1616](https://github.com/uBlockOrigin/uBlock-issues/issues/1616) is resolved. 
 
 #### What is Check Site?
 Check site is an installable browser extention which gives you are report on the current site using URLHaus, Dandilion Sprout's Antimalware, and Check Site's internal blocklists. It also adds an option to check links via the Context Menu. In the report, there are links to more information from Norton, McAfee, Yandex, and Google.
