@@ -1,0 +1,14 @@
+name: learn-github-actions
+on: [push]
+jobs:
+  URLHaus:
+    name: Update URLHaus
+    steps:
+      - shell: bash
+        run: |
+          curl https://raw.githubusercontent.com/curbengh/urlhaus-filter/master/urlhaus-filter-domains.txt -o urlhaus.txt
+      - name: Upload urlhaus
+        uses: actions/upload-artifact@v2
+        with:
+          name: urlhaus
+          path: urlhaus.txt
