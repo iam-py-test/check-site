@@ -64,6 +64,8 @@ window.checksite = {
 		return new Promise(res => {
 			fetch("https://raw.githubusercontent.com/iam-py-test/site-reports-001/main/ownership.json").then(async function(req){
 				console.log(req.json())
+				var owners = await req.json()
+				res((owners[domain]||null))
 			}).catch(function(){res(null)})
 		})
 	},
