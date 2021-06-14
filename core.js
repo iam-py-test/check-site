@@ -59,7 +59,19 @@ window.checksite = {
 	
   },
 	
-	
+	verifiedS(domain){
+		return new Promise(res => {
+			fetch("https://raw.githubusercontent.com/iam-py-test/site-reports-001/main/auth-allowed.json").then(async function(req){
+				var owners = await req.json()
+				console.log(domain,owners)
+				res((owners[domain]||null))
+				
+			}).catch(function(err){
+				console.log(err)
+				res(null)
+			})
+		})
+	},
 	getOwner(domain){
 		return new Promise(res => {
 			fetch("https://raw.githubusercontent.com/iam-py-test/site-reports-001/main/ownership.json").then(async function(req){
