@@ -59,6 +59,15 @@ window.checksite = {
 	
   },
 	
+	
+	getOwner(domain){
+		return new Promise(res => {
+			fetch(async function(req){
+				console.log(req.json())
+			}).catch(function(){res(null)})
+		})
+	},
+	
 isSecureConnection(url){
 	try{
 		var purl = new URL(url)
