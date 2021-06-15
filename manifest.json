@@ -8,6 +8,7 @@
   "browser_action":{
     "default_popup":"popup.html"
   },
+  "default_locale":"en",
   "author":"iam-py-test & contributors",
   "homepage_url":"https://github.com/iam-py-test/check-site",
   "version":"1.2.1",
