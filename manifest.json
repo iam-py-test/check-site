@@ -1,5 +1,5 @@
 {
-  "name":"__MSG__ext_name___",
+  "name":"__MSG__extname___",
   "description":"__MSG__desc___",
   "background":{
     "scripts":["core.js","background.js"]
