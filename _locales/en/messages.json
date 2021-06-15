@@ -1,5 +1,5 @@
 {
-  "ext_name":{
+  "extname":{
     "message":"Check site",
     "description":"The extention name; if this is not translated, using Check site will be hard"
   },
