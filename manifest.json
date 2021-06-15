@@ -1,6 +1,6 @@
 {
-  "name":"Check site",
-  "description":"Get information on sites you visit from common blocklists and antivirus providers",
+  "name":"__MSG__ext_name___",
+  "description":"__MSG__desc___",
   "background":{
     "scripts":["core.js","background.js"]
   },
