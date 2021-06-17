@@ -3,7 +3,7 @@
     "message": "Check site",
     "description": "The extention name"
   },
-  "desc_checksite": {
+  "ext_desc_checksite": {
     "message": "Get information on sites you visit from common blocklists and antivirus providers",
     "description": "The description shown to the user"
   }
