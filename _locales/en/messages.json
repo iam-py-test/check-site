@@ -1,7 +1,7 @@
 {
-  "prompt_for_name": {
-    "message": "What's your name?",
-    "description": "Ask for the user's name"
+  "ext_checksite_name": {
+    "message": "Check site",
+    "description": "The extention name"
   },
   "hello": {
     "message": "Hello, $USER$",
