@@ -1,6 +1,6 @@
 {
   "name":"__MSG_ext_checksite_name__",
-  "description":"__MSG__desc_checksite___ ",
+  "description":"__MSG__ext_desc_checksite___ ",
   "background":{
     "scripts":["core.js","background.js"]
   },
