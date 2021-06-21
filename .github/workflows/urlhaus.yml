@@ -1,15 +1,21 @@
-name: learn-github-actions
-on: [push]
+name: Update the docs
+on: [push, workflow_dispatch]
 jobs:
-  URLHaus:
-    name: Update URLHaus
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - shell: bash
-        run: |
-          curl https://raw.githubusercontent.com/curbengh/urlhaus-filter/master/urlhaus-filter-domains.txt -o urlhaus.txt
-      - name: Upload urlhaus
-        uses: actions/upload-artifact@v2
-        with:
-          name: urlhaus
-          path: urlhaus.txt
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+    - name: Build
+      run: |
+        cd assets
+        curl https://raw.githubusercontent.com/curbengh/urlhaus-filter/master/urlhaus-filter-domains.txt -o urlhaus.txt
+    - uses: EndBug/add-and-commit@v7.2.1
+      with:
+        author_name: iam-py-test
+        author_email: 84232764+iam-py-test@users.noreply.github.com
+        message: '[bot] Update offline assets'
+    
