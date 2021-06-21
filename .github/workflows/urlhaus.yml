@@ -13,6 +13,7 @@ jobs:
       run: |
         cd assets
         curl https://raw.githubusercontent.com/curbengh/urlhaus-filter/master/urlhaus-filter-domains.txt -o urlhaus.txt
+        cd ..
     - uses: EndBug/add-and-commit@v7.2.1
       with:
         author_name: iam-py-test
