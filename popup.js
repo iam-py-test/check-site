@@ -34,7 +34,8 @@ checksite.urlhaus(checksite.gethostorurl(url)).then(function(result_urlhaus){
   checksite.getSiteRep(checksite.gethostorurl(url)).then(function(result){
     if(result === 'site-safe'){document.getElementById('sitereport').title = 'This site is safe, but some content on it may not'}
     if(result === 'localhost'){document.getElementById('sitereport').title = "This site is local to your computer"}
-    document.getElementById('sitereport').textContent = (result === "unknown")?"Not rated":(result === "safe")?"Safe":(result === "site-safe")?"Caution":(result === "malware")?"Malware":(result === 'localhost')?"Local":"Unknown"
+    if(result === 'tor'){document.getElementById("sitereport").title = "This site is hidden via the Tor network, so its status is unknown"}
+    document.getElementById('sitereport').textContent = (result === "unknown")?"Not rated":(result === "safe")?"Safe":(result === "site-safe")?"Caution":(result === "malware")?"Malware":(result === 'localhost')?"Local":(result === 'tor')?"Unknown (Tor encrypted)":"Unknown"
   })
   document.getElementById('connect').textContent = (checksite.isSecureConnection(url) === true)?"Secure":(checksite.isSecureConnection(url) === "unknown")?"Unknown":"Insecure"
   var urlreports = (document.querySelectorAll("a.reportlink[data-href]")||[])
