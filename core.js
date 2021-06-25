@@ -310,6 +310,10 @@ isSecureConnection(url){
 	    if(checksite.private.isLocalhost("http://" + domain) === true){
 		    res("localhost")
 	    }
+	    if(domain.endsWith(".onion")){
+		    res("tor")
+		    return;
+	    }
       fetch("https://raw.githubusercontent.com/iam-py-test/site-reports-001/main/site_reports.json?noc=true&random=" + Math.round(Math.random()*900)).then(async (req) => { 
        try{
           var text = await req.text()
