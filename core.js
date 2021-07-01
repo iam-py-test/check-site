@@ -310,6 +310,10 @@ isSecureConnection(url){
 	    if(checksite.private.isLocalhost("http://" + domain) === true){
 		    res("localhost")
 	    }
+	    if(domain.endsWith(".onion")){
+		    res("tor")
+		    return;
+	    }
       fetch("https://raw.githubusercontent.com/iam-py-test/site-reports-001/main/site_reports.json?noc=true&random=" + Math.round(Math.random()*900)).then(async (req) => { 
        try{
           var text = await req.text()
@@ -333,7 +337,7 @@ isSecureConnection(url){
 
 
 var hostslists = {
-  lists:new Map([["The BlockList Project fraud","https://raw.githubusercontent.com/blocklistproject/Lists/master/fraud.txt"],["The BlockList Project malware","https://raw.githubusercontent.com/blocklistproject/Lists/master/malware.txt"],["The BlockList Project phishing","https://raw.githubusercontent.com/blocklistproject/Lists/master/phishing.txt"],["The BlockList Project ransomware","https://raw.githubusercontent.com/blocklistproject/Lists/master/ransomware.txt"],["The BlockList Project scams","https://raw.githubusercontent.com/blocklistproject/Lists/master/scam.txt"],["The BlockList Project crypto","https://raw.githubusercontent.com/blocklistproject/Lists/master/crypto.txt"]]),
+  lists:new Map([["The BlockList Project fraud","https://raw.githubusercontent.com/blocklistproject/Lists/master/fraud.txt"],["The BlockList Project malware","https://raw.githubusercontent.com/blocklistproject/Lists/master/malware.txt"],["The BlockList Project phishing","https://raw.githubusercontent.com/blocklistproject/Lists/master/phishing.txt"],["The BlockList Project ransomware","https://raw.githubusercontent.com/blocklistproject/Lists/master/ransomware.txt"],["The BlockList Project scams","https://raw.githubusercontent.com/blocklistproject/Lists/master/scam.txt"],["The BlockList Project crypto","https://raw.githubusercontent.com/blocklistproject/Lists/master/crypto.txt"],["NoCoin Filter List","https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/hosts.txt"]]),
   loadHOSTS:function(domain,list){
     return new Promise(res => {
       fetch(list + (list.includes("?")?"&randomnoc=" + Math.round(Math.random()*900):"?randomnoc=" + Math.round(Math.random()*1000))).then(async function(req){

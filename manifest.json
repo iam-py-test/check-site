@@ -1,5 +1,5 @@
 {
-  "name":"Check site",
+  "name":"__MSG_ext_checksite_name__",
   "description":"Get information on sites you visit from common blocklists and antivirus providers",
   "background":{
     "scripts":["core.js","background.js"]
@@ -8,6 +8,7 @@
   "browser_action":{
     "default_popup":"popup.html"
   },
+  "default_locale":"en",
   "author":"iam-py-test & contributors",
   "homepage_url":"https://github.com/iam-py-test/check-site",
   "version":"1.2.1",
