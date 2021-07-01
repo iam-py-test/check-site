@@ -341,7 +341,7 @@ var hostslists = {
         var stext = text.split("\n")
         for(var t = 0;t < stext.length;t++){
           if(stext[t].startsWith('#')){continue}
-          if(domain === stext[t].split(" ")[1]){
+          if(domain.toLowerCase() === stext[t].split(" ")[1].toLowerCase()){
             res(true)
           }
         }
